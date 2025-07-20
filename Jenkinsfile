@@ -25,10 +25,11 @@ pipeline {
 			}	
 		}
 		stage('Publish'){
-			sh """
-				dotnet publish --configuration Release --no-build --output "Publish" --framework net6.0
-			"""
-			archiveArtifacts artifacts: 'Publish/*/', fingerprint: true
+			sh '''
+				mkdir -p "Publish"
+                dotnet publish --configuration ${BUILD_CONFIG} --no-build --output "Publish/JenkinsTest" --framework ${TARGET_FRAMEWORK}
+            '''
+            archiveArtifacts artifacts: 'Publish/**/*', fingerprint: true
 		}
 	}
 }
