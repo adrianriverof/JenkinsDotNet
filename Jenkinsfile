@@ -24,12 +24,14 @@ pipeline {
 				sh 'dotnet build --configuration Release --no-restore'
 			}	
 		}
-		stage('Publish'){
-			sh '''
-				mkdir -p "Publish"
-                dotnet publish --configuration ${BUILD_CONFIG} --no-build --output "Publish/JenkinsTest" --framework ${TARGET_FRAMEWORK}
-            '''
-            archiveArtifacts artifacts: 'Publish/**/*', fingerprint: true
-		}
+		stage('Publish') {
+            steps {
+                sh '''
+                    mkdir -p "Publish"
+                    dotnet publish --configuration Release --no-build --output "Publish/JenkinsTest" --framework net6.0
+                '''
+                archiveArtifacts artifacts: 'Publish/**/*', fingerprint: true
+            }
+        }
 	}
 }
