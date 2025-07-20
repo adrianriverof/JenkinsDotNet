@@ -10,7 +10,7 @@ pipeline {
 		}
 		stage ('Test'){
 			steps {
-				sh "dotnet test --configuration Release --no-build --results-directory TestResults"
+				sh "dotnet test --configuration Release --results-directory TestResults"
 			}
 		}
 	}
