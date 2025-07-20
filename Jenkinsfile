@@ -8,5 +8,10 @@ pipeline {
 				sh "git clone https://github.com/adrianriverof/JenkinsDotNet.git ."
 			}
 		}
+		stage ('Test'){
+			steps {
+				sh "dotnet test --configuration Release --no-build -logger trx --results-directory TestResults"
+			}
+		}
 	}
 }
