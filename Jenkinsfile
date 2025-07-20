@@ -31,6 +31,7 @@ pipeline {
                     dotnet publish --configuration ${TARGET_FRAMEWORK} --no-build --output "Publish/JenkinsTest" --framework net6.0
                 '''
                 archiveArtifacts artifacts: 'Publish/**/*', fingerprint: true
+                
             }
         }
 	}
