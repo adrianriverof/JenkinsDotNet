@@ -11,7 +11,7 @@ pipeline {
 		
 		stage ('Test'){
 			steps {
-				sh "dotnet test --configuration Release --no-build --results-directory TestResults"
+				sh "dotnet test --configuration ${TARGET_FRAMEWORK} --no-build --results-directory TestResults"
 			}
 		}
 		stage ('Restore'){
@@ -21,14 +21,14 @@ pipeline {
         		}
 		stage('Build'){
 			steps {
-				sh 'dotnet build --configuration Release --no-restore'
+				sh 'dotnet build --configuration ${TARGET_FRAMEWORK} --no-restore'
 			}	
 		}
 		stage('Publish') {
             steps {
                 sh '''
                     mkdir -p "Publish"
-                    dotnet publish --configuration Release --no-build --output "Publish/JenkinsTest" --framework net6.0
+                    dotnet publish --configuration ${TARGET_FRAMEWORK} --no-build --output "Publish/JenkinsTest" --framework net6.0
                 '''
                 archiveArtifacts artifacts: 'Publish/**/*', fingerprint: true
             }
