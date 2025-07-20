@@ -7,4 +7,11 @@ public class Tests
     {
         Assert.Pass();
     }
+
+    [Test]
+
+    public void FailingTest()
+    {
+        Assert.Fail();
+    }
 }
