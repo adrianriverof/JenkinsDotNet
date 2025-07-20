@@ -32,6 +32,7 @@ pipeline {
                 '''
                 archiveArtifacts artifacts: 'Publish/**/*', fingerprint: true
             }
+            
         }
 	}
 }
