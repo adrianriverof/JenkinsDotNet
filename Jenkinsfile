@@ -18,5 +18,10 @@ pipeline {
 				sh "dotnet test --configuration Release --results-directory TestResults"
 			}
 		}
+		stage('Build'){
+			steps {
+				sh 'dotnet build --configuration Release --no-restore'
+			}	
+		}
 	}
 }
