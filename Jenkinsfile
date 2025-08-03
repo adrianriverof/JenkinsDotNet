@@ -9,11 +9,7 @@ pipeline {
 			}
 		}
 		
-		stage ('Test'){
-			steps {
-				sh "dotnet test --configuration Publish --no-build --results-directory TestResults"
-			}
-		}
+		
 		stage ('Restore'){
         			steps {
         				sh "dotnet restore"
@@ -24,6 +20,15 @@ pipeline {
 				sh 'dotnet build --configuration Publish --no-restore'
 			}	
 		}
+		
+		stage ('Test'){
+			steps {
+				//sh "dotnet test --configuration Publish --no-build --results-directory TestResults"
+				sh "dotnet test --configuration Release --no-build --results-directory TestResults"
+	
+			}
+		}
+		
 		stage('Publish') {
             steps {
                 sh '''
