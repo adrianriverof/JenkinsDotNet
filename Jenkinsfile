@@ -33,7 +33,7 @@ pipeline {
             steps {
                 sh '''
                     mkdir -p "Publish"
-                    dotnet publish --configuration Publish --no-build --output "Publish/JenkinsTest" --framework net6.0
+                    dotnet publish --configuration Release --no-build --output "Publish/JenkinsTest" --framework net6.0
                 '''
                 archiveArtifacts artifacts: 'Publish/**/*', fingerprint: true
                 
