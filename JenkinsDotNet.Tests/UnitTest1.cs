@@ -8,7 +8,8 @@ public class Tests
         Assert.Pass();
     }
 
-    [Test, Ignore("")]
+    //[Test, Ignore("")]
+    [Test]
     public void FailingTest()
     {
         Assert.Fail();
