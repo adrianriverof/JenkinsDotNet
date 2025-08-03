@@ -17,7 +17,7 @@ pipeline {
         		}
 		stage('Build'){
 			steps {
-				sh 'dotnet build --configuration Publish --no-restore'
+				sh 'dotnet build --configuration Release --no-restore'
 			}	
 		}
 		
